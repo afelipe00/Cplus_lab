@@ -6,9 +6,30 @@
 
 using namespace std;
 
+void vacio(int mat[][7], int fil, int colum, string alma[], string prod[], int res[],int tam, string nom) {
+	int i= 0;
+	int pos = 0;
+	for (i = 0; i < fil; i++) {
+		if (nom == prod[i]) {
+			pos = i;
+			break;
+		}
+	}
+	for (i = 0; i < colum; i++) {
+		int cont = 0;
+		if (mat[pos][i] == 0) {
+			res[cont] = mat[pos][i];
+		}
+		cont++;
+	}
+}
+
 int main()
 {
-    cout << "Hello World!\n";
+	cout << cout << "almacenes sin productos: ";
+	for (int i = 0; i < tam; i++) {
+		 cout<<res[i]<<", ";
+	}
 	system("pause");
 }
 
