@@ -6,30 +6,56 @@
 
 using namespace std;
 
-void vacio(int mat[][7], int fil, int colum, string alma[], string prod[], int res[],int tam, string nom) {
-	int i= 0;
-	int pos = 0;
-	for (i = 0; i < fil; i++) {
-		if (nom == prod[i]) {
-			pos = i;
-			break;
-		}
-	}
-	for (i = 0; i < colum; i++) {
-		int cont = 0;
-		if (mat[pos][i] == 0) {
-			res[cont] = mat[pos][i];
-		}
-		cont++;
-	}
+int menu() {
+	int opc = 0;
+	system("cls");
+	cout << "------------MENU------------" << endl;
+	cout << "1.Nombre Jugador\n2.Cuadro jugador\n3.evaluacion del cuadro\n4.resultados\n5.similitud\n0.salir\n";
+	cin >> opc;
+	return opc;
 }
 
 int main()
 {
-	cout << cout << "almacenes sin productos: ";
-	for (int i = 0; i < tam; i++) {
-		 cout<<res[i]<<", ";
-	}
+	int opc = 0;
+	do {
+		opc = menu();
+		switch (opc)
+		{
+			case 1:
+				system("cls");
+				cout << "opcion 1\n";
+				system("pause");
+				break;
+			case 2:
+				system("cls");
+				cout << "opcion 2\n";
+				system("pause");
+				break;
+			case 3:
+				system("cls");
+				cout << "opcion 3\n";
+				system("pause");
+				break;
+			case 4:
+				system("cls");
+				cout << "opcion 4\n";
+				system("pause");
+				break;
+			case 5:
+				system("cls");
+				cout << "opcion 5\n";
+				system("pause");
+				break;
+			case 0:
+				cout << "FINALIZADO" << endl;
+			default:
+				system("cls");
+				cout << "opcion no valida\n";
+				system("pause");
+				break;
+		}
+	} while (opc !=0);
 	system("pause");
 }
 
