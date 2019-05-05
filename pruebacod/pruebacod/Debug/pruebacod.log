@@ -1,2 +1,3 @@
 ﻿  pruebacod.cpp
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(55): warning C4715: 'codigojugador': no todas las rutas de acceso de control devuelven un valor
   pruebacod.vcxproj -> C:\Users\Felipe Diaz\Documents\GitHub\Programas_Cplus\pruebacod\Debug\pruebacod.exe
