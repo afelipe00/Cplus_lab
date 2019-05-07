@@ -131,7 +131,7 @@ void estructuras() {
 
 	listar_per(persona, np, ciudad, nc);
 	system("pause");
-
+	//comentareado
 }
 
 
