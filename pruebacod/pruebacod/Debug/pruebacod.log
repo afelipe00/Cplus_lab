@@ -1,4 +1,4 @@
 ﻿  pruebacod.cpp
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(34): warning C4101: 'a': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(107): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(56): warning C4715: 'codigojugador': no todas las rutas de acceso de control devuelven un valor
   pruebacod.vcxproj -> C:\Users\Felipe Diaz\Documents\GitHub\Programas_Cplus\pruebacod\Debug\pruebacod.exe
