@@ -16,15 +16,15 @@
 using namespace std;
 
 //CUANTO TIENE QUE DAR EL CUADRADO MAGICO
-#define numberCuadrado 34
-#define cuadrado 4
+#define numberCuadrado  15
+#define cuadrado 3
 
 //estructura del jugador
 struct Jugador {
 	int codPlayer;
 	string nomPlayer;
 	float time;
-	int asnwerPlayer[4][4];
+	int asnwerPlayer[3][3];
 };
 //declarado de funciones
 int menu();
@@ -45,12 +45,16 @@ int main() {
 	//intero para las opciones
 	int opc = 0;
 	//constante del tamaño de la estructura y el cuadromagico
-	const int n = 4;
+	const int n = 7;
 	//variable de tipo estructura(jugador)
-	Jugador player[n] = { {1,"Carmen",3.1,{{1,15,14,4},{12,6,7,9},{8,10,11,5},{13,3,2,16}}},
-						{100,"Maria",3.3,{{1,15,14,4},{12,6,7,9},{8,10,11,5},{13,3,2,16}}},
-						{150,"Ruth",3.2,{{1,15,14,4},{12,6,7,9},{8,10,11,5},{13,3,2,16}}},
-						{200,"Claudia",3.5,{{1,15,14,4},{12,6,7,9},{8,10,11,5},{13,3,2,16}}} };
+	Jugador player[n] = { {1,"Angel",3.1,{{4,3,8},{9,5,1},{2,7,6} } },
+						{100,"Julian",3.5,{{8,1,6},{3,5,7},{4,9,2} } },
+						{150,"Daniel",2.4,{{8,1,6},{3,4,7},{4,9,1} } },
+						{200,"JuanPablo",3.0,{{8,3,4},{1,5,9},{6,7,2} } },
+						{300,"PabloAlberto",3.45,{{6,7,2},{1,5,9},{8,3,4} } },
+						{350,"Agustin",2.9,{{6,7,2},{1,5,8},{8,3,4} } },
+						{400,"JorgeMario",3.6,{{4,9,2},{3,5,7},{8,1,6} }} };
+
 	//ciclo do para ver las opciones que se pueden tomar
 	do {
 		//llamado de la funcion que retorna la opcion
@@ -195,7 +199,7 @@ void preRespuestas(Jugador player[], int N) {//SEGUNDO PUNTO
 	//se recibe la posicion del jugador para imprimir su solucion
 	posPlayer = codigojugador(player, nomPlayer, N); //se llama funcion cod jugador
 	//se llama funcion para imprimir matriz
-	imp_matriz(player, N, posPlayer);
+	imp_matriz(player, 3, posPlayer);
 }
 //tercera opcion
 void preEvaluacion(Jugador player[], int N, int nCuadrado) {//TERCER PUNTO
@@ -209,14 +213,14 @@ void preEvaluacion(Jugador player[], int N, int nCuadrado) {//TERCER PUNTO
 	int res[3] = { 0,0,0 };
 	//for para recorrer la sumas en el cuadro
 	for (int i = 0; i < N; i++) {
-		if (evaluarfil(posPlayer, i, player, N) != nCuadrado) {
+		if (evaluarfil(posPlayer, i, player, 3) != nCuadrado) {
 			res[0] = 1;//FILA NO SUMA 34
 		}
-		if (evaluarco(posPlayer, i, player, N) != nCuadrado) {
+		if (evaluarco(posPlayer, i, player, 3) != nCuadrado) {
 			res[1] = 2;//COLUMNA NO SUMA 34
 		}
 		if (i <= 1) {
-			if (evaluardia(posPlayer, i, player, N) != nCuadrado) {
+			if (evaluardia(posPlayer, i, player, 3) != nCuadrado) {
 				res[2] = 3;//COLUMNA NO SUMA 34
 			}
 		}
@@ -238,8 +242,8 @@ void preEvaluacion(Jugador player[], int N, int nCuadrado) {//TERCER PUNTO
 //cuarta opcion
 void ordenarResultados(Jugador player[], int N, int nCuadrado) {//CUARTO PUNTO
 	//declaracion de variables temporales
-	float res[cuadrado][2], auxtime, auxpos;
-	int resCorrecta[cuadrado], comp = 0;
+	float res[7][2], auxtime, auxpos;
+	int resCorrecta[7], comp = 0;
 	//for para recorrer vector jugadores y tomar las posiciones de ellos
 	for (int i = 0; i < N; i++) {
 		res[i][0] = player[i].time; //TIEMPO DE LOS JUGADORES
@@ -263,16 +267,16 @@ void ordenarResultados(Jugador player[], int N, int nCuadrado) {//CUARTO PUNTO
 	//si se cambia a otro cuadrado magico se tiene que cambiar esta constante
 	for (int i = 0; i < N; i++) {
 		resCorrecta[i] = 0;
-		for (int j = 0; j < N; j++) {
+		for (int j = 0; j < 3; j++) {
 			if (resCorrecta[i] == 0) {
-				if (evaluarfil(i, j, player, N) != nCuadrado) {//error en la fila
+				if (evaluarfil(i, j, player, 3) != nCuadrado) {//error en la fila
 					resCorrecta[i] = 1;
 				}
-				if (evaluarco(i, j, player, N) != nCuadrado) {//error en la columna
+				if (evaluarco(i, j, player, 3) != nCuadrado) {//error en la columna
 					resCorrecta[i] = 2;
 				}
 				if (i <= 1) {
-					if (evaluardia(i, j, player, N) != nCuadrado) {//error en la diagonal
+					if (evaluardia(i, j, player, 3) != nCuadrado) {//error en la diagonal
 						resCorrecta[i] = 3;
 					}
 				}
@@ -329,7 +333,7 @@ void solucion_igual(Jugador player[], int N) {
 				}
 			}
 			//condicion que verifica que toda la matriz es igual
-			if (cont == 16) {
+			if (cont == 9) {
 				//se verifica si es la primera verificacion (esto se hace para no duplicar el primer jugador)
 				if (contj == 0) {
 					cout << "los siguientes jugadores tuvieron el mismo cuadro:\n";
@@ -349,7 +353,7 @@ void solucion_igual(Jugador player[], int N) {
 		if (contj>0) {
 			//se imprimer solucion en comun
 			cout << "solucion : " << endl;
-			imp_matriz(player, N, i);
+			imp_matriz(player, 3, i);
 		}
 		contj = 0;
 	}
