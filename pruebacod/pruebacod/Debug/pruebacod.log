@@ -1,2 +1,6 @@
 ﻿  pruebacod.cpp
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(50): warning C4101: 'resp': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(273): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(169): warning C4715: 'codigojugador': no todas las rutas de acceso de control devuelven un valor
   pruebacod.vcxproj -> C:\Users\Felipe Diaz\Documents\GitHub\Programas_Cplus\pruebacod\Debug\pruebacod.exe
