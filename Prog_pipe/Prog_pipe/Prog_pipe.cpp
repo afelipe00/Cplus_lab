@@ -103,7 +103,7 @@ void ganador(laberinto tab) {
 
 int main()
 {
-
+	cout << "asdfasdfasdf";
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

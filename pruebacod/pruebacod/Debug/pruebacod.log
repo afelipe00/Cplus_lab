@@ -1,6 +1,18 @@
 ﻿  pruebacod.cpp
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(74): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(50): warning C4101: 'resp': variable local sin referencia
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(273): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(169): warning C4715: 'codigojugador': no todas las rutas de acceso de control devuelven un valor
-  pruebacod.vcxproj -> C:\Users\Felipe Diaz\Documents\GitHub\Programas_Cplus\pruebacod\Debug\pruebacod.exe
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(29): warning C4101: 'opc': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(81): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(116): warning C4101: 'div': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(116): warning C4101: 'suma': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(130): warning C4101: 'Vec3': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(143): warning C4101: 'numr': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(164): warning C4101: 'Vec3': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(166): warning C4101: 'tam': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(166): warning C4101: 'i': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(166): warning C4101: 'vecr': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(307): warning C4101: 'j': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(450): warning C4101: 'ande': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(478): warning C4101: 'j': variable local sin referencia
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(122): error C4700: se utilizó la variable local 'distancia' sin inicializar
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(219): error C4700: se utilizó la variable local 'z' sin inicializar
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(428): error C4700: se utilizó la variable local 'conth' sin inicializar
+c:\users\felipe diaz\documents\github\programas_cplus\pruebacod\pruebacod\pruebacod.cpp(431): error C4700: se utilizó la variable local 'contm' sin inicializar
