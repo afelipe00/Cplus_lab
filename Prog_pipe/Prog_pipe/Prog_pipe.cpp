@@ -8,6 +8,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <conio.h>
+
 using namespace std;
 //ESTRUCTURAS PARA EL ALMACENAMIENTO DE LA INFORMACION
 struct Carta
@@ -21,19 +22,18 @@ struct Jugador
 {
 	string nombre;
 	int num_cartas = 0;
-	Carta cartas[10];
-	char yo;
+	Carta cartas[20];
 
 };
 struct Mazo
 {
-	Carta cartas[20] = {{"rojo","PRIMERO","vacio",3},{"rojo","circulo","vacio",3},{"rojo","cuadrado","vacio",3},
-						{"rojo","triangulo","vacio",3} ,{"rojo","circulo","vacio",3} ,{"rojo","triangulo","vacio",3},
-						{"rojo","prueba","vacio",3} ,{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3},
-						{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3},
-						{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3},
-						{"rojo","triangulo","vacio",3} ,{"rojo","triangulo","vacio",3} ,{"rojo","circulo","vacio",3},
-						{"rojo","cuadrado","vacio",3} ,{"rojo","ULTIMO","vacio",3} };
+	Carta cartas[20] = {{"rojo","cuadrado","vacio",1},{"azul","cuadrado","vacio",2},{"verde","cuadrado","vacio",3},
+						{"rosa","cuadrado","vacio",4} ,{"amarillo","cuadrado","vacio",5} ,{"rojo","triangulo","vacio",1},
+						{"azul","triangulo","vacio",2} ,{"verde","triangulo","vacio",3} ,{"rojo","triangulo","vacio",4},
+						{"rojo","triangulo","vacio",5} ,{"rojo","circulo","vacio",1} ,{"rojo","circulo","vacio",2},
+						{"rojo","circulo","vacio",3} ,{"rojo","circulo","vacio",4} ,{"rojo","circulo","vacio",5},
+						{"rojo","flecha","vacio",1} ,{"rojo","flecha","vacio",2} ,{"rojo","flecha","vacio",3},
+						{"rojo","flecha","vacio",4} ,{"rojo","flecha","vacio",5} };
 	int n_cartas = 20;
 };
 
@@ -45,8 +45,6 @@ struct Game {
 	int filas = 3, columnas = 5, expand = 0;
 	Jugador players[2];
 	int tam_players = 2;
-	Jugador winner;
-	bool set = true;
 };
 
 //FUNCIONES PROCESOS LOGICOS DEL CODIGO
@@ -57,7 +55,7 @@ struct Game {
 void imprimir_tablero(Game start) {
 	if (start.expand == 0) {
 		for (int j = 0; j < start.filas; j++) {
-			cout << "------------------------------------------------------------------------------------"<<endl;
+			cout << "\n------------------------------------------------------------------------------------"<<endl;
 			cout << setw(10) << start.tablero[j][0].forma<< setw(10) << "|" << setw(10)<< start.tablero[j][1].forma << setw(10) << "|" << setw(10) << start.tablero[j][2].forma << setw(10) << "|" << setw(10) << start.tablero[j][3].forma<<endl;
 			cout << setw(10) << start.tablero[j][0].color << setw(10) << "|" << setw(10) << start.tablero[j][1].color << setw(10) << "|" << setw(10) << start.tablero[j][2].color << setw(10) << "|" << setw(10) << start.tablero[j][3].color << endl;
 			cout << setw(10) << start.tablero[j][0].relleno << setw(10) << "|" << setw(10) << start.tablero[j][1].relleno << setw(10) << "|" << setw(10) << start.tablero[j][2].relleno << setw(10) << "|" << setw(10) << start.tablero[j][3].relleno << endl;
@@ -67,7 +65,7 @@ void imprimir_tablero(Game start) {
 	else
 	{
 		for (int j = 0; j < start.filas; j++) {
-			cout << "--------------------------------------------------------------------------------------------" << endl;
+			cout << "\n--------------------------------------------------------------------------------------------" << endl;
 			cout << setw(10) << start.tablero[j][0].forma << setw(10) << "|" << setw(10) << start.tablero[j][1].forma << setw(10) << "|" << setw(10) << start.tablero[j][2].forma << setw(10) << "|" << setw(10) << start.tablero[j][3].forma << setw(10) << "|" << setw(10) << start.tablero[j][4].forma << endl;
 			cout << setw(10) << start.tablero[j][0].color << setw(10) << "|" << setw(10) << start.tablero[j][1].color << setw(10) << "|" << setw(10) << start.tablero[j][2].color << setw(10) << "|" << setw(10) << start.tablero[j][3].color << setw(10) << "|" << setw(10) << start.tablero[j][4].color << endl;
 			cout << setw(10) << start.tablero[j][0].relleno << setw(10) << "|" << setw(10) << start.tablero[j][1].relleno << setw(10) << "|" << setw(10) << start.tablero[j][2].relleno << setw(10) << "|" << setw(10) << start.tablero[j][3].relleno << setw(10) << "|" << setw(10) << start.tablero[j][4].relleno << endl;
@@ -131,26 +129,26 @@ void ganador(Game start) {
 	}
 }
 
-Game ran_mazo(Game start) {
-	srand(time(NULL));
-	int limit = 20;
-	int num = rand() % limit;
-	num -= 1;
-	Carta temp = start.mazo.cartas[start.mazo.n_cartas - 1];
-	start.mazo.cartas[start.mazo.n_cartas - 1] = start.mazo.cartas[num];
-	start.mazo.cartas[num] = temp;
-	int num2 = rand() % limit;
-	num2 -= 2;
-	Carta temp2 = start.mazo.cartas[start.mazo.n_cartas - 2];
-	start.mazo.cartas[start.mazo.n_cartas - 2] = start.mazo.cartas[num2];
-	start.mazo.cartas[num2] = temp2;
-	int num3 = rand() % limit;
-	num3 -= 3;
-	Carta temp3 = start.mazo.cartas[start.mazo.n_cartas - 3];
-	start.mazo.cartas[start.mazo.n_cartas - 3] = start.mazo.cartas[num3];
-	start.mazo.cartas[num3] = temp3;
+Game rework_mat(Game start) {
+	Carta temp[12];
+	int k = 0;
+	for (int i = 0; i < start.filas; i++) {
+		for (int j = 0; j < start.columnas; j++) {
+			if (start.tablero[i][j].forma != "0" && start.tablero[i][j].color != "0" && start.tablero[i][j].relleno != "0" && start.tablero[i][j].num != 0) {
+				temp[k] = start.tablero[i][j];
+				k++;
+			}
+		}
+	}
+	k = 0;
+	for (int i = 0; i < start.filas; i++) {
+		for (int j = 0; j < start.columnas-1; j++) {
+			start.tablero[i][j] = temp[k];
+			k++;
+		}
+	}
+	start.expand = 0;
 	return start;
-
 }
 
 Game yes_set(Game start,int player,Carta temp[],int tam_t) {
@@ -187,22 +185,17 @@ Game yes_set(Game start,int player,Carta temp[],int tam_t) {
 				}
 			}
 		}
-
+		start = rework_mat(start);
 	}
 	return start;
 }
 
 Game no_set(Game start, int player) {
 	if (start.players[player].num_cartas >= 3) {
-		start.mazo.cartas[start.mazo.n_cartas + 1] = start.players[player].cartas[start.players[player].num_cartas];
-		start.mazo.cartas[start.mazo.n_cartas + 2] = start.players[player].cartas[start.players[player].num_cartas - 1];
-		start.mazo.cartas[start.mazo.n_cartas + 3] = start.players[player].cartas[start.players[player].num_cartas - 2];
 		start.players[player].cartas[start.players[player].num_cartas] = { "0","0","0",0 };
 		start.players[player].cartas[start.players[player].num_cartas - 1] = { "0","0","0",0 };
 		start.players[player].cartas[start.players[player].num_cartas - 2] = { "0","0","0",0 };
-		start.mazo.n_cartas += 3;
 		start.players[player].num_cartas -= 3;
-		start = ran_mazo(start);
 	}
 	else
 	{
@@ -213,12 +206,12 @@ Game no_set(Game start, int player) {
 
 Game rellenar_tablero(Game start) {
 	Carta reset = { "0", "0", "0", 0 };
+	int cont_vacios = 0;
 	if (start.expand == 0) {
 		for (int i = 0; i < start.filas; i++) {
-			for (int j = 0; j < start.columnas - 1; j++) {
+			for (int j = 0; j < start.columnas-1; j++) {
 				if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
-					start.tablero[i][j] = start.mazo.cartas[start.mazo.n_cartas - 1];
-					start.mazo.n_cartas -= 1;
+					cont_vacios++;
 				}
 			}
 		}
@@ -227,11 +220,47 @@ Game rellenar_tablero(Game start) {
 		for (int i = 0; i < start.filas; i++) {
 			for (int j = 0; j < start.columnas; j++) {
 				if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
-					start.tablero[i][j] = start.mazo.cartas[start.mazo.n_cartas - 1];
-					start.mazo.n_cartas -= 1;
+					cont_vacios++;
 				}
 			}
 		}
+	}
+	if (start.mazo.n_cartas >= cont_vacios) {
+		if (start.expand == 0) {
+			for (int i = 0; i < start.filas; i++) {
+				for (int j = 0; j < start.columnas - 1; j++) {
+					if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
+						start.tablero[i][j] = start.mazo.cartas[start.mazo.n_cartas - 1];
+						start.mazo.n_cartas -= 1;
+					}
+				}
+			}
+		}
+		else {
+			for (int i = 0; i < start.filas; i++) {
+				for (int j = 0; j < start.columnas; j++) {
+					if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
+						start.tablero[i][j] = start.mazo.cartas[start.mazo.n_cartas - 1];
+						start.mazo.n_cartas -= 1;
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		cout << "\nno hay suficientes cartas para llenar el tablero\n";
+			for (int i = 0; i < start.filas; i++) {
+				for (int j = 0; j < start.columnas - 1; j++) {
+					if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
+						start.tablero[i][j] = start.mazo.cartas[start.mazo.n_cartas - 1];
+						start.mazo.n_cartas -= 1;
+					}
+					if (start.mazo.n_cartas <= 0) {
+						break;
+					}
+				}
+			}
 	}
 	return start;
 }
@@ -285,7 +314,7 @@ Game value_set(Game start, int player) {
 				temp[i] = start.tablero[2][3];
 				break;
 			default:
-				cout << "carta no existente";
+				cout << "\ncarta no existente\n";
 				//si hay error se disminuye i para que repita la carta (no se pueden cometer mas de 1 error simultaneo)
 				//i--;
 				break;
@@ -343,7 +372,7 @@ Game value_set(Game start, int player) {
 			default:
 				cout << "carta no existente";
 				//si hay error se disminuye i para que repita la carta (no se pueden cometer mas de 1 error simultaneo)
-				//i--;
+				i--;
 				break;
 			}
 		}
@@ -375,23 +404,56 @@ Game value_set(Game start, int player) {
 	// 0 todas diferentes, 3 todas iguales
 	//si da 1 es que solo dos de las 3 cartas son iguales
 	if (contf == 1 || contc == 1 || contn == 1 || contr == 1 ) {
+		system("cls");
 		cout << "\nNO SET\n";
 		start = no_set(start,player);
 		imprimir_tablero(start);
 	}
 	else {
+		system("cls");
 		cout << "\nSET\n";
 		start = yes_set(start, player, temp, 3);
 		imprimir_tablero(start);
 		system("pause");
+		system("cls");
 		start = rellenar_tablero(start);
 		imprimir_tablero(start);
 	}
 	return start;
 }
-
+bool winner(Game start) {
+	bool win = false;
+	int cont_vacios = 0;
+	if (start.expand == 0) {
+		for (int i = 0; i < start.filas; i++) {
+			for (int j = 0; j < start.columnas - 1; j++) {
+				if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
+					cont_vacios++;
+				}
+			}
+		}
+		if (cont_vacios == 12) {
+			win = true;
+		}
+	}
+	else {
+		for (int i = 0; i < start.filas; i++) {
+			for (int j = 0; j < start.columnas; j++) {
+				if (start.tablero[i][j].forma == "0" && start.tablero[i][j].color == "0" && start.tablero[i][j].relleno == "0" && start.tablero[i][j].num == 0) {
+					cont_vacios++;
+				}
+			}
+		}
+		if (cont_vacios == 15) {
+			win = true;
+		}
+	}
+	return win;
+}
 Game juego(Game start) {
 	int opc, cont_noset =0;
+	bool win = false;
+	bool final = false;
 	do{
 		cout << "\nHere We Go";
 		cout << "\nIngresa ID (0 NO SET): ";
@@ -406,7 +468,7 @@ Game juego(Game start) {
 			break;
 		case 0:
 			if (cont_noset == 0) {
-				cout << "Se agrega Columna";
+				cout << "Se agrega Columna\n";
 				start.expand = 1;
 				cont_noset++;
 				start = rellenar_tablero(start);
@@ -416,7 +478,7 @@ Game juego(Game start) {
 			else
 			{
 				cont_noset++;
-				cout << "No mas SET'S";
+				cout << "No mas SET'S\n";
 			}
 			break;
 		default:
@@ -424,7 +486,13 @@ Game juego(Game start) {
 			cout<<"\nFINISH\n";
 			break;
 		}
-	} while (cont_noset != 2  || start.mazo.n_cartas == 0);
+		cout << "\ncartas en el mazo: " << start.mazo.n_cartas << endl;
+		system("pause");
+		win = winner(start);
+		if (cont_noset >= 2 || win == true) {
+			final = true;
+		}
+	} while (final == false);
 	return start;
 }
 
